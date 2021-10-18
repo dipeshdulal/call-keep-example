@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.call_keep_example">
+    package="com.dipeshdulal.call_keep_example">
    <application
         android:label="call_keep_example"
         android:icon="@mipmap/ic_launcher">
