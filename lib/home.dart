@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:call_keep_example/main.dart';
 import 'package:call_keep_example/services/messaging.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    _$message = FirebaseMessaging.onMessage.listen(Messaging.handleMessage);
+    _$message = FirebaseMessaging.onMessage.listen(
+      Messaging.handleBackgroundMessage,
+    );
     super.initState();
   }
 
@@ -42,7 +45,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("home page"),
+        child: TextButton(
+          child: Text("Call Page"),
+          onPressed: () {
+            MyApp.pushNamed("/call", args: {});
+          },
+        ),
       ),
     );
   }
