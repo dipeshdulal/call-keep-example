@@ -1,4 +1,5 @@
 import 'package:call_keep_example/call.dart';
+import 'package:call_keep_example/call_keep_wrapper.dart';
 import 'package:call_keep_example/home.dart';
 import 'package:call_keep_example/services/messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,10 +28,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Navigator(
-        key: mainNavigatorKey,
-        initialRoute: "/home",
-        onGenerateRoute: _onGenerateRoutes,
+      home: CallkeepWrapper(
+        child: Navigator(
+          key: mainNavigatorKey,
+          initialRoute: "/home",
+          onGenerateRoute: _onGenerateRoutes,
+        ),
       ),
     );
   }
