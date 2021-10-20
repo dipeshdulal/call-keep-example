@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:call_keep_example/main.dart';
 import 'package:callkeep/callkeep.dart';
 import 'package:device_info/device_info.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -53,14 +52,7 @@ class Messaging {
       callKeep.on(
         CallKeepPerformAnswerCallAction(),
         (CallKeepPerformAnswerCallAction event) async {
-          await callKeep.endCall(event.callUUID ?? "");
           await callKeep.backToForeground();
-          Timer(Duration(seconds: 1), () {
-            MyApp.pushNamed("/call", args: {
-              "calluuid": callUUID,
-              "handle": callerName,
-            });
-          });
         },
       );
 
